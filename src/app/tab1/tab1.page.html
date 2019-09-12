@@ -1,0 +1,47 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>
+      Alarms
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab
+    (click)="openModal()"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngIf="list.length > 0; else error">
+        <ion-col
+          col-12
+          col-md-6
+          col-lg-4
+          class="welcome-card"
+          *ngFor="let item of list"
+        >
+          <ion-card-header>
+            <ion-card-title>{{list.time}}</ion-card-title>
+            <ion-card-subtitle>{{list.regularity}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-toggle></ion-toggle>
+          </ion-card-content>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+
+  <ng-template #error>
+    <ion-text class="ion-text-center">No data found</ion-text>
+  </ng-template>
+</ion-content>
