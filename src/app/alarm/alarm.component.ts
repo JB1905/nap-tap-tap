@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  selector: 'app-alarm',
+  templateUrl: './alarm.component.html',
+  styleUrls: ['./alarm.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class AlarmComponent implements OnInit {
   time: string;
   repeat: number[] = [];
   label = '';
@@ -19,9 +19,5 @@ export class ModalComponent implements OnInit {
 
   async closeModal() {
     await this.modalController.dismiss();
-  }
-
-  setAlarm() {
-    // const request = window.indexedDB.open('alarms')
   }
 }

@@ -8,35 +8,37 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'alarms',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../alarms/alarms.module').then(m => m.AlarmsPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'statistics',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../statistics/statistics.module').then(
+                m => m.StatisticsPageModule
+              )
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/alarms',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/alarms',
     pathMatch: 'full'
   }
 ];

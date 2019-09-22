@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalComponent } from './modal.component';
+import { AlarmComponent } from './alarm.component';
 
 @NgModule({
   imports: [CommonModule, IonicModule],
-  entryComponents: [ModalComponent],
-  declarations: [ModalComponent],
-  exports: [ModalComponent]
+  entryComponents: [AlarmComponent],
+  declarations: [AlarmComponent],
+  exports: [AlarmComponent]
 })
-export class ModalComponentModule {}
+export class AlarmComponentModule {}
