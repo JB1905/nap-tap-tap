@@ -3,13 +3,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { v4 } from 'uuid';
 
+import { Alarm } from '../../models/alarm.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AlarmService {
-  private _alarms: BehaviorSubject<any> = new BehaviorSubject([]);
+  private _alarms: BehaviorSubject<Array<Alarm>> = new BehaviorSubject([]);
 
-  public readonly alarms: Observable<any> = this._alarms.asObservable();
+  public readonly alarms: Observable<
+    Array<Alarm>
+  > = this._alarms.asObservable();
 
   constructor(private storage: Storage) {
     this.getAlarms().then(alarms => {
@@ -17,7 +21,7 @@ export class AlarmService {
     });
   }
 
-  async addAlarm({ ...settings }) {
+  async addAlarm({ ...settings }: Omit<Alarm, 'id'>) {
     const alarms = await this.getAlarms();
 
     const alarm = {
@@ -30,13 +34,13 @@ export class AlarmService {
     this.setAlarms(alarms);
   }
 
-  async getAlarms(): Promise<any> {
+  async getAlarms(): Promise<Array<Alarm>> {
     const alarms = await this.storage.get('alarms');
 
     return alarms || [];
   }
 
-  async updateAlarm(id: string, settings) {
+  async updateAlarm(id: string, settings: Omit<Alarm, 'id'>) {
     const alarms = await this.getAlarms();
 
     this.setAlarms(alarms);
@@ -50,7 +54,7 @@ export class AlarmService {
     this.setAlarms(alarms);
   }
 
-  private setAlarms(alarms: any) {
+  private setAlarms(alarms: Array<Alarm>) {
     alarms.sort((prev, next) => (prev.time > next.time ? 1 : -1));
 
     this.storage.set('alarms', alarms).then(alarms => {

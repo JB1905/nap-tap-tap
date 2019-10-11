@@ -5,6 +5,8 @@ import days from 'days';
 import { SettingsComponent } from '../settings/settings.component';
 import { AlarmService } from '../core/services/alarm/alarm.service';
 
+import { Alarm } from '../core/models/alarm.model';
+
 @Component({
   selector: 'app-alarms',
   templateUrl: 'alarms.page.html',
@@ -55,7 +57,7 @@ export class AlarmsPage implements OnInit {
   }
 
   updateAlarm(id: string) {
-    this.alarmService.updateAlarm(id, {});
+    this.alarmService.updateAlarm(id, {} as Omit<Alarm, 'id'>);
   }
 
   deleteAlarm(id: string) {

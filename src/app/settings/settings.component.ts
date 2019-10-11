@@ -50,13 +50,15 @@ export class SettingsComponent implements OnInit {
   setAlarm() {
     if (this.label && this.time) {
       if (this.id) {
-        this.alarmService.updateAlarm(this.id, {}).then(() => {
-          this.closeModal();
-        });
+        this.alarmService
+          .updateAlarm(this.id, {} as Omit<Alarm, 'id'>)
+          .then(() => {
+            this.closeModal();
+          });
       } else {
         const time = new Date(this.time);
 
-        const alarm: Partial<Alarm> = {
+        const alarm: Omit<Alarm, 'id'> = {
           label: this.label,
           repeat: this.repeat,
           time: `${time.getHours() < 10 ? '0' : ''}${time.getHours()}:${

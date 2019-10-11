@@ -3,13 +3,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { v4 } from 'uuid';
 
+import { Nap } from '../../models/nap.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class NapService {
-  private _naps: BehaviorSubject<any> = new BehaviorSubject([]);
+  private _naps: BehaviorSubject<Array<Nap>> = new BehaviorSubject([]);
 
-  public readonly naps: Observable<any> = this._naps.asObservable();
+  public readonly naps: Observable<Array<Nap>> = this._naps.asObservable();
 
   constructor(private storage: Storage) {
     this.getNaps().then(naps => {
@@ -17,7 +19,7 @@ export class NapService {
     });
   }
 
-  async addNap({ ...settings }) {
+  async addNap({ ...settings }: Omit<Nap, 'id'>) {
     const naps = await this.getNaps();
 
     const nap = {
@@ -30,13 +32,13 @@ export class NapService {
     this.setNaps(naps);
   }
 
-  async getNaps(): Promise<any> {
+  async getNaps(): Promise<Array<Nap>> {
     const naps = await this.storage.get('naps');
 
     return naps || [];
   }
 
-  async updateNap(id: string) {
+  async updateNap(id: string, settings: Omit<Nap, 'id'>) {
     const naps = await this.getNaps();
 
     this.setNaps(naps);
@@ -50,7 +52,7 @@ export class NapService {
     this.setNaps(naps);
   }
 
-  private setNaps(naps: any) {
+  private setNaps(naps: Array<Nap>) {
     this.storage.set('naps', naps).then(naps => {
       this._naps.next(naps);
     });
