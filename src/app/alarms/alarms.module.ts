@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AlarmsPage } from './alarms.page';
-import { AlarmComponentModule } from '../alarm/alarm.module';
+import { SettingsComponentModule } from '../settings/settings.module';
 
 @NgModule({
   imports: [
-    AlarmComponentModule,
+    SettingsComponentModule,
     IonicModule,
     CommonModule,
     FormsModule,

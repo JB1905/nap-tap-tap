@@ -1,8 +1,32 @@
-.welcome-card {
-  width: 20%;
-  min-width: 310px;
-  margin: 8px auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.alarm {
+  width: calc(100vw - 6px);
+
+  @media (min-width: 720px) {
+    flex-direction: column;
+  }
 }
+
+.days {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#remove {
+  ion-button {
+    margin-right: 18px;
+  }
+}
+
+#more {
+  transform: scale(0.6);
+}
+
+// ion-content {
+//   > ion-grid {
+//     height: 100%;
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }

@@ -1,47 +1,83 @@
 <ion-header translucent>
   <ion-toolbar>
+    <ion-buttons *ngIf="list.length > 0" slot="secondary">
+      <ion-button (click)="setEditable()">
+        {{editable ? 'Done' : 'Edit'}}
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>
       Alarms
     </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-fab
-    (click)="openModal()"
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed"
-  >
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
   <ion-grid>
     <ion-row>
       <ng-container *ngIf="list.length > 0; else error">
-        <ion-col
-          col-12
-          col-md-6
-          col-lg-4
-          class="welcome-card"
-          *ngFor="let item of list"
-        >
-          <ion-card-header>
-            <ion-card-title>{{list.time}}</ion-card-title>
-            <ion-card-subtitle>{{list.regularity}}</ion-card-subtitle>
-          </ion-card-header>
+        <ion-list>
+          <ion-item
+            col-12
+            col-md-6
+            col-lg-4
+            class="alarm"
+            *ngFor="let item of list"
+            (click)="editAlarm(item.id)"
+          >
+            <div id="remove">
+              <ion-button
+                *ngIf="editable"
+                (click)="deleteAlarm(item.id)"
+                size="small"
+                shape="round"
+                color="danger"
+              >
+                <ion-icon slot="icon-only" icon="remove"></ion-icon>
+              </ion-button>
+            </div>
 
-          <ion-card-content>
-            <ion-toggle></ion-toggle>
-          </ion-card-content>
-        </ion-col>
+            <ion-label>
+              <h1>{{item.time}}</h1>
+
+              <h2 class="days">
+                {{item.label}}
+                <span *ngFor="let day of item.repeat">{{days[day]}}&nbsp;</span>
+              </h2>
+            </ion-label>
+
+            <ion-toggle
+              *ngIf="!editable"
+              checked="item.active === true"
+              (change)="updateAlarm(item.id)"
+            ></ion-toggle>
+
+            <ion-icon
+              *ngIf="editable"
+              name="arrow-forward"
+              id="more"
+            ></ion-icon>
+          </ion-item>
+        </ion-list>
       </ng-container>
+
+      <ng-template #error>
+        <div>
+          <ion-text class="ion-text-center">
+            <h5>Alarms not found</h5>
+          </ion-text>
+
+          <ion-text class="ion-text-center">
+            <h6>Click on + button and create alarm</h6>
+          </ion-text>
+        </div>
+      </ng-template>
     </ion-row>
   </ion-grid>
-
-  <ng-template #error>
-    <ion-text class="ion-text-center">No data found</ion-text>
-  </ng-template>
 </ion-content>

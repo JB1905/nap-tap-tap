@@ -6,4 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-grid>
+    <ng-container *ngIf="naps.length > 0; else error">
+      <ion-text class="ion-text-center">yes</ion-text>
+    </ng-container>
+
+    <div>
+      <ion-text class="ion-text-center">
+        <h5>Nap statistics not found</h5>
+      </ion-text>
+    </div>
+  </ion-grid>
+</ion-content>
