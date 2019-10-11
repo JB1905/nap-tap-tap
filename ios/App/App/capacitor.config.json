@@ -1,7 +1,0 @@
-{
-  "appId": "io.ionic.starter",
-  "appName": "nap-tap-tap",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www"
-}
