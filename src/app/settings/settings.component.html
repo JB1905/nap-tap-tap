@@ -56,17 +56,21 @@
           *ngFor="let ringtone of ringtonesList; let i = index"
           value="{{ i }}"
         >
-          {{ringtone}}
+          {{ ringtone }}
         </ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label>Snooze</ion-label>
-      
+
       <ion-toggle [(ngModel)]="snooze"></ion-toggle>
     </ion-item>
   </ion-list>
 
-  <ion-button *ngIf="id" (click)="deleteAlarm()">Remove Alarm</ion-button>
+  <div class="center">
+    <ion-button *ngIf="id" (click)="deleteAlarm()" class="remove">
+      Remove Alarm
+    </ion-button>
+  </div>
 </ion-content>

@@ -30,17 +30,18 @@
             class="alarm"
             *ngFor="let item of list"
             (click)="editAlarm(item.id)"
+            [ngClass]="{editable: editable}"
           >
             <div id="remove">
-              <ion-button
+              <ion-fab-button
                 *ngIf="editable"
                 (click)="deleteAlarm(item.id)"
                 size="small"
                 shape="round"
                 color="danger"
               >
-                <ion-icon slot="icon-only" icon="remove"></ion-icon>
-              </ion-button>
+                <ion-icon icon="remove"></ion-icon>
+              </ion-fab-button>
             </div>
 
             <ion-label>

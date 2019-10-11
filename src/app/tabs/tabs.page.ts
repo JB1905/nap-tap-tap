@@ -10,11 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-  constructor(
-    // public alertController: AlertController,
-    // private alarmService: AlarmService,
-    // private napService: NapService
-  ) {
+  constructor() // public alertController: AlertController,
+  // private alarmService: AlarmService,
+  // private napService: NapService
+  {
     // this.presentAle rt();
   }
 

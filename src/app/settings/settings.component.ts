@@ -50,7 +50,7 @@ export class SettingsComponent implements OnInit {
   setAlarm() {
     if (this.label && this.time) {
       if (this.id) {
-        this.alarmService.updateAlarm(this.id).then(() => {
+        this.alarmService.updateAlarm(this.id, {}).then(() => {
           this.closeModal();
         });
       } else {

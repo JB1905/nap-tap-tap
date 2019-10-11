@@ -1,6 +1,10 @@
 .alarm {
   width: calc(100vw - 6px);
 
+  &.editable {
+    cursor: pointer;
+  }
+
   @media (min-width: 720px) {
     flex-direction: column;
   }
@@ -12,9 +16,7 @@
 }
 
 #remove {
-  ion-button {
-    margin-right: 18px;
-  }
+  transform: scale(0.6);
 }
 
 #more {

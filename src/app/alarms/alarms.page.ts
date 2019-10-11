@@ -54,6 +54,10 @@ export class AlarmsPage implements OnInit {
     }
   }
 
+  updateAlarm(id: string) {
+    this.alarmService.updateAlarm(id, {});
+  }
+
   deleteAlarm(id: string) {
     this.alarmService.deleteAlarm(id);
   }
