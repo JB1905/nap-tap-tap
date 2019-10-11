@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button color="danger" (click)="closeModal()">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ id ? 'Edit alarm' : 'Create new alarm' }}
+    </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="setAlarm()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime
+        placeholder="Never"
+        displayFormat="HH:mm"
+        [(ngModel)]="time"
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Repeat</ion-label>
+
+      <ion-select multiple placeholder="Never" [(ngModel)]="repeat">
+        <ion-select-option
+          *ngFor="let item of days; let i = index"
+          value="{{ i }}"
+        >
+          Every {{ item }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Label</ion-label>
+
+      <ion-input [(ngModel)]="label" class="ion-text-right"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sound</ion-label>
+
+      <ion-select [(ngModel)]="sound">
+        <ion-select-option
+          *ngFor="let ringtone of ringtonesList; let i = index"
+          value="{{ i }}"
+        >
+          {{ ringtone }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Snooze</ion-label>
+
+      <ion-toggle [(ngModel)]="snooze"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <div class="center">
+    <ion-button *ngIf="id" (click)="deleteAlarm()" class="remove">
+      Remove Alarm
+    </ion-button>
+  </div>
+</ion-content>

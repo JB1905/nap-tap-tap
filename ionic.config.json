@@ -1,5 +1,8 @@
 {
   "name": "nap-tap-tap",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
