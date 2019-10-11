@@ -59,7 +59,9 @@ export class SettingsComponent implements OnInit {
         const alarm: Partial<Alarm> = {
           label: this.label,
           repeat: this.repeat,
-          time: `${time.getHours()}:${time.getMinutes()}`,
+          time: `${time.getHours() < 10 ? '0' : ''}${time.getHours()}:${
+            time.getMinutes() < 10 ? '0' : ''
+          }${time.getMinutes()}`,
           sound: this.sound,
           snooze: this.snooze,
           active: this.active
