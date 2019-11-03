@@ -5,14 +5,39 @@
     cursor: pointer;
   }
 
-  @media (min-width: 720px) {
-    flex-direction: column;
+  @media (min-width: 640px) {
+    width: calc(100vw / 2);
   }
+
+  @media (min-width: 720px) {
+    width: calc(100vw / 3);
+  }
+
+  @media (min-width: 1080px) {
+    width: calc(100vw / 4);
+  }
+
+  @media (min-width: 1200px) {
+    width: calc(100vw / 5);
+  }
+}
+
+ion-list {
+  display: flex;
+  flex-direction: row;
 }
 
 .days {
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.error {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #remove {
