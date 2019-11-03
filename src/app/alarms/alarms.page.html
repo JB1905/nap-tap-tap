@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-buttons *ngIf="list.length > 0" slot="secondary">
+    <ion-buttons *ngIf="alarms.length > 0" slot="secondary">
       <ion-button (click)="setEditable()">
         {{editable ? 'Done' : 'Edit'}}
       </ion-button>
@@ -19,7 +19,7 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="list.length > 0; else error">
+  <ng-container *ngIf="alarms.length > 0; else error">
     <ion-grid>
       <ion-row>
         <ion-list>
@@ -28,14 +28,14 @@
             col-md-6
             col-lg-4
             class="alarm"
-            *ngFor="let item of list"
-            (click)="editAlarm(item.id)"
+            *ngFor="let alarm of alarms"
+            (click)="editAlarm(alarm.id)"
             [ngClass]="{editable: editable}"
           >
             <div id="remove">
               <ion-fab-button
                 *ngIf="editable"
-                (click)="deleteAlarm(item.id)"
+                (click)="deleteAlarm(alarm.id)"
                 size="small"
                 shape="round"
                 color="danger"
@@ -45,18 +45,18 @@
             </div>
 
             <ion-label>
-              <h1>{{item.time}}</h1>
+              <h1>{{alarm.time}}</h1>
 
               <h2 class="days">
-                {{item.label}}
-                <span *ngFor="let day of item.repeat">{{days[day]}}&nbsp;</span>
+                {{alarm.label}}
+                <span *ngFor="let day of alarm.repeat">{{days[day]}}&nbsp;</span>
               </h2>
             </ion-label>
 
             <ion-toggle
               *ngIf="!editable"
-              checked="item.active === true"
-              (change)="updateAlarm(item.id)"
+              checked="alarm.active === true"
+              (change)="updateAlarm(alarm.id)"
             ></ion-toggle>
 
             <ion-icon

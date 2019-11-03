@@ -13,7 +13,7 @@ import { Alarm } from '../core/models/alarm.model';
   styleUrls: ['alarms.page.scss']
 })
 export class AlarmsPage implements OnInit {
-  list = [];
+  alarms: Alarm[] = [];
   editable = false;
 
   days = days.abbr;
@@ -25,7 +25,7 @@ export class AlarmsPage implements OnInit {
 
   ngOnInit() {
     this.alarmService.alarms.subscribe(alarms => {
-      this.list = alarms;
+      this.alarms = alarms;
     });
   }
 
@@ -36,7 +36,7 @@ export class AlarmsPage implements OnInit {
       }, 400);
     }
 
-    const item = this.list.filter(item => item.id === id);
+    const item = this.alarms.filter(alarm => alarm.id === id);
 
     const modal = await this.modalController.create({
       component: SettingsComponent,
