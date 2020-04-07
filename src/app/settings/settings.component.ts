@@ -10,7 +10,7 @@ import { AlarmService } from '../core/services/alarm/alarm.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
   time: string;
@@ -32,7 +32,7 @@ export class SettingsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ringtones.getRingtone().then(ringtones => {
+    this.ringtones.getRingtone().then((ringtones) => {
       this.ringtonesList = ringtones;
     });
   }
@@ -50,11 +50,18 @@ export class SettingsComponent implements OnInit {
   setAlarm() {
     if (this.label && this.time) {
       if (this.id) {
-        this.alarmService
-          .updateAlarm(this.id, {} as Omit<Alarm, 'id'>)
-          .then(() => {
-            this.closeModal();
-          });
+        const alarm: Omit<Alarm, 'id'> = {
+          time: this.time,
+          repeat: this.repeat,
+          label: this.label,
+          sound: this.sound,
+          snooze: this.snooze,
+          active: this.active,
+        };
+
+        this.alarmService.updateAlarm(this.id, alarm).then(() => {
+          this.closeModal();
+        });
       } else {
         const time = new Date(this.time);
 
@@ -66,7 +73,7 @@ export class SettingsComponent implements OnInit {
           }${time.getMinutes()}`,
           sound: this.sound,
           snooze: this.snooze,
-          active: this.active
+          active: this.active,
         };
 
         this.alarmService.addAlarm(alarm).then(() => {

@@ -10,7 +10,7 @@ import { Alarm } from '../core/models/alarm.model';
 @Component({
   selector: 'app-alarms',
   templateUrl: 'alarms.page.html',
-  styleUrls: ['alarms.page.scss']
+  styleUrls: ['alarms.page.scss'],
 })
 export class AlarmsPage implements OnInit {
   alarms: Alarm[] = [];
@@ -24,7 +24,7 @@ export class AlarmsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.alarmService.alarms.subscribe(alarms => {
+    this.alarmService.alarms.subscribe((alarms) => {
       this.alarms = alarms;
     });
   }
@@ -36,11 +36,11 @@ export class AlarmsPage implements OnInit {
       }, 400);
     }
 
-    const item = this.alarms.filter(alarm => alarm.id === id);
+    const item = this.alarms.filter((alarm) => alarm.id === id);
 
     const modal = await this.modalController.create({
       component: SettingsComponent,
-      componentProps: { ...item[0] }
+      componentProps: { ...item[0] },
     });
 
     await modal.present();
@@ -57,7 +57,19 @@ export class AlarmsPage implements OnInit {
   }
 
   updateAlarm(id: string) {
-    this.alarmService.updateAlarm(id, {} as Omit<Alarm, 'id'>);
+    let isActive: boolean;
+
+    this.alarmService.alarms.subscribe((alarms) => {
+      for (const alarm of alarms) {
+        if (alarm.id === id) {
+          isActive = alarm.active;
+        }
+      }
+    });
+
+    this.alarmService.updateAlarm(id, {
+      active: !isActive,
+    } as Omit<Alarm, 'id'>);
   }
 
   deleteAlarm(id: string) {

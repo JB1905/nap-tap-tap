@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 import { Nap } from '../../models/nap.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NapService {
   private _naps: BehaviorSubject<Array<Nap>> = new BehaviorSubject([]);
@@ -14,7 +14,7 @@ export class NapService {
   public readonly naps: Observable<Array<Nap>> = this._naps.asObservable();
 
   constructor(private storage: Storage) {
-    this.getNaps().then(naps => {
+    this.getNaps().then((naps) => {
       this._naps.next(naps);
     });
   }
@@ -24,7 +24,7 @@ export class NapService {
 
     const nap = {
       ...settings,
-      id: v4()
+      id: v4(),
     };
 
     naps.push(nap);
@@ -47,13 +47,13 @@ export class NapService {
   async deleteNap(id: string) {
     let naps = await this.getNaps();
 
-    naps = naps.filter(nap => nap.id !== id);
+    naps = naps.filter((nap) => nap.id !== id);
 
     this.setNaps(naps);
   }
 
   private setNaps(naps: Array<Nap>) {
-    this.storage.set('naps', naps).then(naps => {
+    this.storage.set('naps', naps).then((naps) => {
       this._naps.next(naps);
     });
   }

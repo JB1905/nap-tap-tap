@@ -19,6 +19,12 @@
 </ion-header>
 
 <ion-content>
+  <!-- <ion-header collapse="condense">              
+    <ion-toolbar>      
+      <ion-title size="large">Alarms</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
   <ng-container *ngIf="alarms.length > 0; else error">
     <ion-grid>
       <ion-row>
@@ -49,14 +55,16 @@
 
               <h2 class="days">
                 {{alarm.label}}
-                <span *ngFor="let day of alarm.repeat">{{days[day]}}&nbsp;</span>
+                <span *ngFor="let day of alarm.repeat"
+                  >{{days[day]}}&nbsp;</span
+                >
               </h2>
             </ion-label>
 
             <ion-toggle
               *ngIf="!editable"
-              checked="alarm.active === true"
-              (change)="updateAlarm(alarm.id)"
+              [checked]="alarm.active"
+              (ionChange)="updateAlarm(alarm.id)"
             ></ion-toggle>
 
             <ion-icon
@@ -71,16 +79,14 @@
   </ng-container>
 
   <ng-template #error>
-    <div class="error">
-      <div>
-        <ion-text class="ion-text-center">
-          <h5>Alarms not found</h5>
-        </ion-text>
+    <div id="content">
+      <ion-text class="ion-text-center">
+        <h5>Alarms not found</h5>
+      </ion-text>
 
-        <ion-text class="ion-text-center">
-          <h6>Click on + button and create alarm</h6>
-        </ion-text>
-      </div>
+      <ion-text class="ion-text-center">
+        <h6>Click on + button and create alarm</h6>
+      </ion-text>
     </div>
   </ng-template>
 </ion-content>

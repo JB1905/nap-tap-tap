@@ -10,8 +10,8 @@ import { StatisticsPage } from './statistics.page';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: StatisticsPage }])
+    RouterModule.forChild([{ path: '', component: StatisticsPage }]),
   ],
-  declarations: [StatisticsPage]
+  declarations: [StatisticsPage],
 })
 export class StatisticsPageModule {}
