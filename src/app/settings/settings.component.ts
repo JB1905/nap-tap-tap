@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { NativeRingtones } from '@ionic-native/native-ringtones/ngx';
+import td from 'two-digit';
 import days from 'days';
 
 import { Alarm } from '../core/models/alarm.model';
@@ -13,9 +14,10 @@ import { AlarmService } from '../core/services/alarm/alarm.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  time: string;
-  repeat: number[] = [];
   label = 'Alarm';
+  message = '';
+  repeat: number[] = [];
+  time: string;
   sound: string;
   snooze = true;
   active = true;
@@ -51,9 +53,10 @@ export class SettingsComponent implements OnInit {
     if (this.label && this.time) {
       if (this.id) {
         const alarm: Omit<Alarm, 'id'> = {
-          time: this.time,
-          repeat: this.repeat,
           label: this.label,
+          message: this.message,
+          repeat: this.repeat,
+          time: this.time,
           sound: this.sound,
           snooze: this.snooze,
           active: this.active,
@@ -67,10 +70,9 @@ export class SettingsComponent implements OnInit {
 
         const alarm: Omit<Alarm, 'id'> = {
           label: this.label,
+          message: this.message,
           repeat: this.repeat,
-          time: `${time.getHours() < 10 ? '0' : ''}${time.getHours()}:${
-            time.getMinutes() < 10 ? '0' : ''
-          }${time.getMinutes()}`,
+          time: `${td(time.getHours())}:${td(time.getMinutes())}`,
           sound: this.sound,
           snooze: this.snooze,
           active: this.active,
