@@ -10,6 +10,6 @@ import { SettingsComponent } from './settings.component';
   imports: [CommonModule, IonicModule, FormsModule],
   entryComponents: [SettingsComponent],
   declarations: [SettingsComponent],
-  exports: [SettingsComponent]
+  exports: [SettingsComponent],
 })
 export class SettingsComponentModule {}

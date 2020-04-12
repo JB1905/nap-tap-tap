@@ -13,9 +13,9 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../alarms/alarms.module').then(m => m.AlarmsPageModule)
-          }
-        ]
+              import('../alarms/alarms.module').then((m) => m.AlarmsPageModule),
+          },
+        ],
       },
       {
         path: 'statistics',
@@ -24,27 +24,27 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../statistics/statistics.module').then(
-                m => m.StatisticsPageModule
-              )
-          }
-        ]
+                (m) => m.StatisticsPageModule
+              ),
+          },
+        ],
       },
       {
         path: '',
         redirectTo: '/tabs/alarms',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/alarms',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}

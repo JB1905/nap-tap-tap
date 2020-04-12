@@ -5,7 +5,7 @@ import { NapService } from '../core/services/nap/nap.service';
 @Component({
   selector: 'app-statistics',
   templateUrl: 'statistics.page.html',
-  styleUrls: ['statistics.page.scss']
+  styleUrls: ['statistics.page.scss'],
 })
 export class StatisticsPage implements OnInit {
   naps = [];
@@ -13,7 +13,7 @@ export class StatisticsPage implements OnInit {
   constructor(private napService: NapService) {}
 
   ngOnInit() {
-    this.napService.naps.subscribe(naps => {
+    this.napService.naps.subscribe((naps) => {
       this.naps = naps;
     });
   }

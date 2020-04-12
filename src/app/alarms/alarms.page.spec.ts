@@ -10,7 +10,7 @@ describe('AlarmsPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AlarmsPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlarmsPage);

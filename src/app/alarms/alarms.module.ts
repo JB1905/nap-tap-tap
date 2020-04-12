@@ -12,8 +12,8 @@ import { SettingsComponentModule } from '../settings/settings.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: AlarmsPage }])
+    RouterModule.forChild([{ path: '', component: AlarmsPage }]),
   ],
-  declarations: [AlarmsPage]
+  declarations: [AlarmsPage],
 })
 export class AlarmsPageModule {}

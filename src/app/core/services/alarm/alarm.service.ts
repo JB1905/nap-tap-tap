@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 import { Alarm } from '../../models/alarm.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlarmService {
   private _alarms: BehaviorSubject<Array<Alarm>> = new BehaviorSubject([]);
@@ -16,7 +16,7 @@ export class AlarmService {
   > = this._alarms.asObservable();
 
   constructor(private storage: Storage) {
-    this.getAlarms().then(alarms => {
+    this.getAlarms().then((alarms) => {
       this._alarms.next(alarms);
     });
   }
@@ -26,7 +26,7 @@ export class AlarmService {
 
     const alarm = {
       ...settings,
-      id: v4()
+      id: v4(),
     };
 
     alarms.push(alarm);
@@ -41,7 +41,13 @@ export class AlarmService {
   }
 
   async updateAlarm(id: string, settings: Omit<Alarm, 'id'>) {
+    console.log(settings);
+
     const alarms = await this.getAlarms();
+
+    const update = alarms.findIndex((alarm) => alarm.id === id);
+
+    alarms[update] = { ...alarms[update], ...settings };
 
     this.setAlarms(alarms);
   }
@@ -49,7 +55,7 @@ export class AlarmService {
   async deleteAlarm(id: string) {
     let alarms = await this.getAlarms();
 
-    alarms = alarms.filter(alarm => alarm.id !== id);
+    alarms = alarms.filter((alarm) => alarm.id !== id);
 
     this.setAlarms(alarms);
   }
@@ -57,7 +63,7 @@ export class AlarmService {
   private setAlarms(alarms: Array<Alarm>) {
     alarms.sort((prev, next) => (prev.time > next.time ? 1 : -1));
 
-    this.storage.set('alarms', alarms).then(alarms => {
+    this.storage.set('alarms', alarms).then((alarms) => {
       this._alarms.next(alarms);
     });
   }
