@@ -1,7 +1,7 @@
 {
   "name": "nap-tap-tap",
   "version": "1.0.0",
-  "description": "",
+  "description": "Alarm clock with nap counter",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "private": true,
