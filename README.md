@@ -3,6 +3,13 @@
 ## About
 Alarm clock with nap counter
 
+##### Main Features
+- set, edit & remove alarms
+- start nap for alarm
+- statistics for the number and frequency of naps (maybe you should set the alarm to a later time)
+
+## Prerequisites
+
 ## Setup
 ##### 1. Clone repo
 ```
@@ -18,7 +25,6 @@ cd nap-tap-tap
 - Angular
 - Ionic
 - SASS
-<!-- - Cordova -->
 
 ## License
 This project is licensed under the MIT License © 2020-present Jakub Biesiada
