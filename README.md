@@ -22,9 +22,9 @@ cd nap-tap-tap
 ```
 
 ## Build with
-- Angular
-- Ionic
-- SASS
+- [Angular](https://angular.io/)
+- [Ionic](https://ionicframework.com/)
+- [SCSS](https://sass-lang.com/)
 
 ## License
 This project is licensed under the MIT License © 2020-present Jakub Biesiada
