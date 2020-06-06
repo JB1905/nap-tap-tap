@@ -26,6 +26,24 @@ git clone https://github.com/JB1905/nap-tap-tap.git
 cd nap-tap-tap
 ```
 
+##### 3. Install dependencies
+
+```sh
+npm i
+
+# Or, use yarn
+yarn
+```
+
+##### 4. Run
+
+```sh
+npm start
+
+# Or, use yarn
+yarn start
+```
+
 ## Build with
 
 - [Angular](https://angular.io/)
