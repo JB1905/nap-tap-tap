@@ -10,8 +10,6 @@ Alarm clock with nap counter
 - start nap for alarm
 - statistics for the number and frequency of naps (maybe you should set the alarm to a later time)
 
-## Prerequisites
-
 ## Setup
 
 ##### 1. Clone repo
