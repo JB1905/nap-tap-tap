@@ -7,7 +7,7 @@
     </ion-buttons>
 
     <ion-title>
-      {{ id ? 'Edit alarm' : 'Create new alarm' }}
+      {{ id ? "Edit alarm" : "Create new alarm" }}
     </ion-title>
 
     <ion-buttons slot="primary">
@@ -74,7 +74,7 @@
     </ion-item>
   </ion-list>
 
-  <div class="center">
+  <div class="center ion-margin-top">
     <ion-button *ngIf="id" (click)="deleteAlarm()" class="remove">
       Remove Alarm
     </ion-button>

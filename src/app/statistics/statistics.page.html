@@ -7,20 +7,20 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-header collapse="condense">              
-    <ion-toolbar>      
+  <ion-header collapse="condense">
+    <ion-toolbar>
       <ion-title size="large">Nap Statistics</ion-title>
     </ion-toolbar>
-  </ion-header> -->
+  </ion-header>
 
   <ng-container *ngIf="naps.length > 0; else error">
     <ion-grid>
-      <ion-text class="ion-text-center">yes</ion-text>
+      <ion-text class="ion-text-center"></ion-text>
     </ion-grid>
   </ng-container>
 
   <ng-template #error>
-    <div id="content">
+    <div id="content" class="ion-align-items-center">
       <ion-text class="ion-text-center">
         <h5>Nap statistics not found</h5>
       </ion-text>
