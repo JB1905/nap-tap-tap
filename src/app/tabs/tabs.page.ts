@@ -45,24 +45,29 @@ export class TabsPage implements OnInit {
   async presentAlert(alarm: Alarm) {
     this.visible = true;
 
+    const buttons = [
+      {
+        text: 'Stop',
+        handler: () => {
+          // this.alarmService.updateAlarm
+
+          this.visible = false;
+        },
+      },
+    ];
+
+    if (alarm.snooze) {
+      buttons.unshift({
+        text: 'Nap',
+        handler: () => {
+          this.visible = false;
+        },
+      });
+    }
+
     const alert = await this.alertController.create({
       header: alarm.label,
-      buttons: [
-        {
-          text: 'Nap',
-          handler: () => {
-            this.visible = false;
-          },
-        },
-        {
-          text: 'Stop',
-          handler: () => {
-            // this.alarmService.updateAlarm
-
-            this.visible = false;
-          },
-        },
-      ],
+      buttons,
     });
 
     await alert.present();

@@ -45,16 +45,17 @@
     <ion-item>
       <ion-label>Label</ion-label>
 
-      <ion-input [(ngModel)]="label" class="ion-text-right"></ion-input>
+      <ion-input [(ngModel)]="label" class="ion-text-right" placeholder="e.g.: Go to school!"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Message</ion-label>
 
-      <ion-input [(ngModel)]="message" class="ion-text-right"></ion-input>
+      <ion-input [(ngModel)]="message" class="ion-text-right" placeholder="e.g.: Take your homework!"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="ringtonesList.length > 0">
+      <!-- <ion-label>{{ringtonesList}}</ion-label> -->
       <ion-label>Sound</ion-label>
 
       <ion-select [(ngModel)]="sound">
@@ -62,7 +63,7 @@
           *ngFor="let ringtone of ringtonesList; let i = index"
           value="{{ i }}"
         >
-          {{ ringtone }}
+          {{ ringtone.name }}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -74,7 +75,7 @@
     </ion-item>
   </ion-list>
 
-  <div class="center">
+  <div class="center ion-margin-top">
     <ion-button *ngIf="id" (click)="deleteAlarm()" class="remove">
       Remove Alarm
     </ion-button>

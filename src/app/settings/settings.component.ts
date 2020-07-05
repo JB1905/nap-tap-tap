@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { NativeRingtones } from '@ionic-native/native-ringtones/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
 import td from 'two-digit';
 import days from 'days';
 
@@ -24,19 +25,26 @@ export class SettingsComponent implements OnInit {
   id: string;
 
   days = days;
-  ringtonesList = [];
+  ringtonesList: any = [];
 
   constructor(
     private modalController: ModalController,
     public alertController: AlertController,
     private alarmService: AlarmService,
-    private ringtones: NativeRingtones
+    public nativeRingtones: NativeRingtones,
+    public filePath: FilePath
   ) {}
 
   ngOnInit() {
-    this.ringtones.getRingtone().then((ringtones) => {
-      this.ringtonesList = ringtones;
-    });
+    this.nativeRingtones.getRingtone().then(
+      (ringtones) => {
+        this.ringtonesList = ringtones;
+        // this.ringtonesList = JSON.stringify(ringtones);
+      },
+      (err) => {
+        // this.ringtonesList = JSON.stringify(err);
+      }
+    );
   }
 
   async closeModal() {
