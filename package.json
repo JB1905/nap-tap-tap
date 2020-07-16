@@ -23,10 +23,10 @@
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
-    "@capacitor/android": "^2.2.1",
-    "@capacitor/cli": "^2.2.1",
-    "@capacitor/core": "^2.2.1",
-    "@capacitor/ios": "^2.2.1",
+    "@capacitor/android": "^2.3.0",
+    "@capacitor/cli": "^2.3.0",
+    "@capacitor/core": "^2.3.0",
+    "@capacitor/ios": "^2.3.0",
     "@ionic-native/calendar": "^5.27.0",
     "@ionic-native/core": "^5.27.0",
     "@ionic-native/file-path": "^5.27.0",
@@ -90,7 +90,7 @@
     "protractor": "~5.4.4",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.2",
-    "typescript": "~3.9.6"
+    "typescript": "~3.9.7"
   },
   "cordova": {
     "plugins": {
