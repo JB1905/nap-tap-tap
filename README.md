@@ -15,31 +15,31 @@ Alarm clock with nap counter
 ##### 1. Clone repo
 
 ```sh
-git clone https://github.com/JB1905/nap-tap-tap.git
+$ git clone https://github.com/JB1905/nap-tap-tap.git
 ```
 
 ##### 2. Go to directory
 
 ```sh
-cd nap-tap-tap
+$ cd /path/to/nap-tap-tap
 ```
 
 ##### 3. Install dependencies
 
 ```sh
-npm i
+$ npm i
 
-# Or, use yarn
-yarn
+# Or use yarn
+$ yarn
 ```
 
 ##### 4. Run
 
 ```sh
-npm start
+$ npm start
 
-# Or, use yarn
-yarn start
+# Or use yarn
+$ yarn start
 ```
 
 ## Build with

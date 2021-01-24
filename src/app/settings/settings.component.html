@@ -7,7 +7,7 @@
     </ion-buttons>
 
     <ion-title>
-      {{ id ? 'Edit alarm' : 'Create new alarm' }}
+      {{ id ? "Edit alarm" : "Create new alarm" }}
     </ion-title>
 
     <ion-buttons slot="primary">
@@ -45,13 +45,21 @@
     <ion-item>
       <ion-label>Label</ion-label>
 
-      <ion-input [(ngModel)]="label" class="ion-text-right" placeholder="e.g.: Go to school!"></ion-input>
+      <ion-input
+        [(ngModel)]="label"
+        class="ion-text-right"
+        placeholder="e.g.: Go to school!"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Message</ion-label>
 
-      <ion-input [(ngModel)]="message" class="ion-text-right" placeholder="e.g.: Take your homework!"></ion-input>
+      <ion-input
+        [(ngModel)]="message"
+        class="ion-text-right"
+        placeholder="e.g.: Take your homework!"
+      ></ion-input>
     </ion-item>
 
     <ion-item *ngIf="ringtonesList.length > 0">
