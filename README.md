@@ -10,6 +10,8 @@ Alarm clock with nap counter
 - start nap for alarm
 - statistics for the number and frequency of naps (maybe you should set the alarm to a later time)
 
+[Open Nap Tap Tap](https://nap-tap-tap.netlify.app/)
+
 ## Setup
 
 ##### 1. Clone repo
